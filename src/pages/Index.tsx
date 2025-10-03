@@ -83,8 +83,8 @@ const Index = () => {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-2">
-            <Icon name="Monitor" className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold">Kiosk Rental</span>
+            <img src="https://cdn.poehali.dev/files/7f3b23e1-4295-4263-8e2e-4c62190f7c7c.png" alt="ArendaSmart" className="h-10 w-10" />
+            <span className="text-xl font-bold">ArendaSmart</span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <a href="#home" className="text-sm font-medium hover:text-primary transition-colors">Главная</a>
@@ -134,11 +134,11 @@ const Index = () => {
                   </Button>
                 </div>
               </div>
-              <div className="relative h-[400px] animate-scale-in">
+              <div className="relative h-[500px] flex items-center justify-center animate-scale-in">
                 <img 
-                  src="/img/f078f109-92d4-44ff-bdfc-4b04de137c5b.jpg" 
+                  src="https://cdn.poehali.dev/files/ff52aecb-f548-4b27-b079-c1407a3af9db.png" 
                   alt="Interactive Kiosk" 
-                  className="rounded-2xl object-cover w-full h-full shadow-2xl"
+                  className="h-full w-auto object-contain drop-shadow-2xl"
                 />
               </div>
             </div>
@@ -166,10 +166,10 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
-              <Icon name="Monitor" className="h-5 w-5 text-primary" />
-              <span className="font-semibold">Kiosk Rental</span>
+              <img src="https://cdn.poehali.dev/files/7f3b23e1-4295-4263-8e2e-4c62190f7c7c.png" alt="ArendaSmart" className="h-8 w-8" />
+              <span className="font-semibold">ArendaSmart</span>
             </div>
-            <p className="text-sm text-muted-foreground">© 2024 Все права защищены</p>
+            <p className="text-sm text-muted-foreground">© 2025 Все права защищены</p>
             <div className="flex gap-4">
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 <Icon name="Mail" className="h-5 w-5" />
