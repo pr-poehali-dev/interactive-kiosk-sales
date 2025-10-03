@@ -91,11 +91,11 @@ const Index = () => {
             <a href="#models" className="text-sm font-medium hover:text-primary transition-colors">Модели</a>
             <a href="#advantages" className="text-sm font-medium hover:text-primary transition-colors">Преимущества</a>
             <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Контакты</a>
-            <Button asChild variant="outline">
-              <a href="https://example.com" target="_blank" rel="noopener noreferrer">
-                Купить киоск
-                <Icon name="ExternalLink" className="ml-2 h-4 w-4" />
-              </a>
+            <Button 
+              className="transition-all hover:scale-105 active:scale-95"
+              onClick={() => document.getElementById('models')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Аренда
             </Button>
           </nav>
           <Button variant="ghost" size="icon" className="md:hidden">
@@ -189,12 +189,11 @@ function PartnersSection() {
   const { ref, isInView } = useInView();
   
   const partners = [
-    { name: 'TechCorp', icon: 'Building2' },
-    { name: 'RetailMax', icon: 'ShoppingBag' },
-    { name: 'HealthPlus', icon: 'Heart' },
-    { name: 'BankSecure', icon: 'Landmark' },
-    { name: 'FoodChain', icon: 'UtensilsCrossed' },
-    { name: 'AutoService', icon: 'Car' },
+    { name: 'ЦУМ', logo: 'https://cdn.poehali.dev/files/7ea1d583-58bf-472b-9a7b-973cf5ca79b7.png' },
+    { name: 'TATNEFT', logo: 'https://cdn.poehali.dev/files/44f7d353-820d-4268-af42-d9ca089f180f.png' },
+    { name: 're:Store', logo: 'https://cdn.poehali.dev/files/285b9e69-0bc2-43e2-a9ce-70e911e0cf01.png' },
+    { name: 'Шереметьево', logo: 'https://cdn.poehali.dev/files/d5198636-0b70-446a-a3ea-665af38c4761.png' },
+    { name: 'Газпром', logo: 'https://cdn.poehali.dev/files/06a979aa-4964-41ae-ab8c-714c149c829c.png' },
   ];
 
   return (
@@ -206,19 +205,20 @@ function PartnersSection() {
           Нам доверяют
         </h2>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 items-center">
         {partners.map((partner, index) => (
           <div 
             key={partner.name}
-            className={`flex flex-col items-center gap-3 transition-all duration-700 ${
+            className={`flex items-center justify-center transition-all duration-700 ${
               isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
             style={{ transitionDelay: `${index * 100}ms` }}
           >
-            <div className="w-20 h-20 rounded-2xl bg-muted flex items-center justify-center hover:bg-primary/10 transition-colors">
-              <Icon name={partner.icon} className="h-10 w-10 text-muted-foreground" />
-            </div>
-            <span className="text-sm font-medium text-muted-foreground">{partner.name}</span>
+            <img 
+              src={partner.logo} 
+              alt={partner.name} 
+              className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"
+            />
           </div>
         ))}
       </div>
