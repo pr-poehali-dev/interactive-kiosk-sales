@@ -1,12 +1,284 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import Icon from '@/components/ui/icon';
+import { Badge } from '@/components/ui/badge';
 
 const Index = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+  };
+
+  const models = [
+    {
+      id: 1,
+      name: 'Kiosk Pro 24',
+      description: 'Профессиональный киоск с 24" экраном для торговых центров',
+      image: '/img/f078f109-92d4-44ff-bdfc-4b04de137c5b.jpg',
+      available: true,
+      features: ['24" сенсорный экран', 'Встроенный принтер', 'NFC-модуль']
+    },
+    {
+      id: 2,
+      name: 'Kiosk Compact 15',
+      description: 'Компактная модель с 15" экраном для небольших помещений',
+      image: '/img/3a332c4c-a4ff-4730-a1ad-2f6cd4ce7af6.jpg',
+      available: true,
+      features: ['15" сенсорный экран', 'Компактный дизайн', 'Wi-Fi модуль']
+    },
+    {
+      id: 3,
+      name: 'Kiosk Ultra 32',
+      description: 'Премиум модель с 32" экраном и расширенным функционалом',
+      image: '/img/f078f109-92d4-44ff-bdfc-4b04de137c5b.jpg',
+      available: false,
+      features: ['32" 4K экран', 'AI-ассистент', 'Биометрия']
+    },
+    {
+      id: 4,
+      name: 'Kiosk Outdoor',
+      description: 'Защищенная модель для установки на улице',
+      image: '/img/3a332c4c-a4ff-4730-a1ad-2f6cd4ce7af6.jpg',
+      available: false,
+      features: ['Защита IP65', 'Антивандальный корпус', 'Автояркость']
+    }
+  ];
+
+  const advantages = [
+    {
+      icon: 'Calendar',
+      title: 'Гибкие сроки аренды',
+      description: 'От 1 дня до долгосрочных контрактов'
+    },
+    {
+      icon: 'Settings',
+      title: 'Полное обслуживание',
+      description: 'Установка, настройка и техподдержка включены'
+    },
+    {
+      icon: 'Wrench',
+      title: 'Быстрая замена',
+      description: 'Замена оборудования в течение 24 часов при поломке'
+    },
+    {
+      icon: 'Link',
+      title: 'Кастомизация',
+      description: 'Настройка интерфейса под ваши задачи'
+    }
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 color-black text-black">Добро пожаловать!</h1>
-        <p className="text-xl text-gray-600">тут будет отображаться ваш проект</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container mx-auto flex h-16 items-center justify-between px-4">
+          <div className="flex items-center gap-2">
+            <Icon name="Monitor" className="h-6 w-6 text-primary" />
+            <span className="text-xl font-bold">Kiosk Rental</span>
+          </div>
+          <nav className="hidden md:flex items-center gap-6">
+            <a href="#home" className="text-sm font-medium hover:text-primary transition-colors">Главная</a>
+            <a href="#models" className="text-sm font-medium hover:text-primary transition-colors">Модели</a>
+            <a href="#advantages" className="text-sm font-medium hover:text-primary transition-colors">Преимущества</a>
+            <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Контакты</a>
+            <Button asChild variant="outline">
+              <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+                Купить киоск
+                <Icon name="ExternalLink" className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+          </nav>
+          <Button variant="ghost" size="icon" className="md:hidden">
+            <Icon name="Menu" className="h-6 w-6" />
+          </Button>
+        </div>
+      </header>
+
+      <main>
+        <section id="home" className="relative overflow-hidden py-20 md:py-32">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6 animate-fade-in">
+                <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                  Аренда интерактивных киосков
+                </h1>
+                <p className="text-lg text-muted-foreground">
+                  Современные решения для автоматизации обслуживания клиентов. 
+                  Гибкие условия аренды и полная техническая поддержка.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90">
+                    <a href="#models">Выбрать модель</a>
+                  </Button>
+                  <Button size="lg" variant="outline">
+                    <a href="#contact">Связаться с нами</a>
+                  </Button>
+                </div>
+              </div>
+              <div className="relative h-[400px] animate-scale-in">
+                <img 
+                  src="/img/f078f109-92d4-44ff-bdfc-4b04de137c5b.jpg" 
+                  alt="Interactive Kiosk" 
+                  className="rounded-2xl object-cover w-full h-full shadow-2xl"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="models" className="py-20 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">Наши модели</h2>
+              <p className="text-lg text-muted-foreground">Выберите подходящий киоск для вашего бизнеса</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {models.map((model, index) => (
+                <Card key={model.id} className="overflow-hidden hover:shadow-xl transition-shadow animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+                  <div className="relative h-48">
+                    <img 
+                      src={model.image} 
+                      alt={model.name} 
+                      className="w-full h-full object-cover"
+                    />
+                    {model.available ? (
+                      <Badge className="absolute top-3 right-3 bg-green-500">Доступно</Badge>
+                    ) : (
+                      <Badge className="absolute top-3 right-3 bg-amber-500">В разработке</Badge>
+                    )}
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold mb-2">{model.name}</h3>
+                    <p className="text-sm text-muted-foreground mb-4">{model.description}</p>
+                    <ul className="space-y-2 mb-4">
+                      {model.features.map((feature, i) => (
+                        <li key={i} className="flex items-center gap-2 text-sm">
+                          <Icon name="Check" className="h-4 w-4 text-primary flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button 
+                      className="w-full" 
+                      disabled={!model.available}
+                    >
+                      {model.available ? 'Арендовать' : 'Скоро доступно'}
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="advantages" className="py-20">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">Почему выбирают нас</h2>
+              <p className="text-lg text-muted-foreground">Преимущества аренды наших киосков</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {advantages.map((advantage, index) => (
+                <div 
+                  key={index} 
+                  className="text-center space-y-4 p-6 rounded-lg hover:bg-muted/50 transition-colors animate-fade-in"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
+                    <Icon name={advantage.icon} className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold">{advantage.title}</h3>
+                  <p className="text-muted-foreground">{advantage.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className="py-20 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-5xl font-bold mb-4">Свяжитесь с нами</h2>
+                <p className="text-lg text-muted-foreground">Оставьте заявку и мы свяжемся с вами в ближайшее время</p>
+              </div>
+              <Card>
+                <CardContent className="p-6">
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <Input 
+                        placeholder="Ваше имя" 
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Input 
+                        type="email" 
+                        placeholder="Email" 
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Input 
+                        type="tel" 
+                        placeholder="Телефон" 
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Textarea 
+                        placeholder="Сообщение" 
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        rows={4}
+                        required
+                      />
+                    </div>
+                    <Button type="submit" className="w-full" size="lg">
+                      Отправить заявку
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t py-8">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-2">
+              <Icon name="Monitor" className="h-5 w-5 text-primary" />
+              <span className="font-semibold">Kiosk Rental</span>
+            </div>
+            <p className="text-sm text-muted-foreground">© 2024 Все права защищены</p>
+            <div className="flex gap-4">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Icon name="Mail" className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Icon name="Phone" className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
