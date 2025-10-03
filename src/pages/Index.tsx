@@ -116,11 +116,20 @@ const Index = () => {
                   Гибкие условия аренды и полная техническая поддержка.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
-                    <a href="#models">Выбрать модель</a>
+                  <Button 
+                    size="lg" 
+                    className="bg-primary hover:bg-primary/90 transition-all hover:scale-105 active:scale-95"
+                    onClick={() => document.getElementById('models')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Выбрать модель
                   </Button>
-                  <Button size="lg" variant="outline">
-                    <a href="#contact">Связаться с нами</a>
+                  <Button 
+                    size="lg" 
+                    variant="outline"
+                    className="transition-all hover:scale-105 active:scale-95"
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Связаться с нами
                   </Button>
                 </div>
               </div>
@@ -168,8 +177,9 @@ const Index = () => {
                       ))}
                     </ul>
                     <Button 
-                      className="w-full" 
+                      className="w-full transition-all hover:scale-105 active:scale-95" 
                       disabled={!model.available}
+                      onClick={() => model.available && document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                     >
                       {model.available ? 'Арендовать' : 'Скоро доступно'}
                     </Button>
@@ -249,7 +259,7 @@ const Index = () => {
                         required
                       />
                     </div>
-                    <Button type="submit" className="w-full" size="lg">
+                    <Button type="submit" className="w-full transition-all hover:scale-105 active:scale-95" size="lg">
                       Отправить заявку
                     </Button>
                   </form>
